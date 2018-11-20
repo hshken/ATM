@@ -16,12 +16,15 @@ public class GenderActivity extends AppCompatActivity {
     }
     public void next(View view){
         edgender = findViewById(R.id.ed_gender);
-        gender = edgender.getText().toString();
+         gender = edgender.getText().toString();
+
         getSharedPreferences("GENDER",MODE_PRIVATE)
                 .edit()
                 .putString("GENDER",gender)
                 .apply();
         Intent mainActivity = new Intent(this,MainActivity.class);
+        setResult(RESULT_OK);
+        mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(mainActivity);
     }
     public void back(View view){

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final int RC_LOGIN = 100;
     boolean logon = false;
     @Override
@@ -24,17 +24,18 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }else{
                 //save//
-                logon = true;
-                String nickname = getSharedPreferences("user",MODE_PRIVATE)
-                        .getString("NICKNAME",null);
-                int age = getSharedPreferences("user",MODE_PRIVATE)
-                        .getInt("AGE",0);
-                int gender = getSharedPreferences("user",MODE_PRIVATE)
-                        .getInt("GENDER",0);
-                if(nickname == null || age == 0 || gender == 0) {
+               logon = true;
+               // String nickname = getSharedPreferences("user",MODE_PRIVATE)
+                //        .getString("NICKNAME",null);
+               // int age = getSharedPreferences("user",MODE_PRIVATE)
+                 //       .getInt("AGE",0);
+                //int gender = getSharedPreferences("user",MODE_PRIVATE)
+                 //       .getInt("GENDER",0);
+               // if(nickname == null || age == 0 || gender == 0) {
+                if (user.isValid()){
                     Intent nick = new Intent(this, NicknameActivity.class);
                     startActivity(nick);
-                }
+              }
             }
         }
     }

@@ -3,6 +3,13 @@ package hshken.com.atm;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends BaseActivity {
     private static final int RC_LOGIN = 100;
@@ -15,6 +22,13 @@ public class MainActivity extends BaseActivity {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivityForResult(intent,RC_LOGIN);
         }
+        //data
+        List<String> fruits = Arrays.asList("香蕉","鳳梨","芭樂");
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,fruits);
+        ListView listView =findViewById(R.id.list);
+        listView.setAdapter(adapter);
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         ed_username = findViewById(R.id.ed_userid);
         ed_passwd = findViewById(R.id.ed_password);
         String username = getSharedPreferences("ATM",MODE_PRIVATE)
-                .getString("USERID","");
+                .getString("USER","");
         ed_username.setText(username);
     }
     public void login(View view){
@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
             //存取userid在XML//
             getSharedPreferences("ATM", MODE_PRIVATE)
                     .edit()
-                    .putString("USERID", username)
+                    .putString("USER", username)
                     .apply();
 
             setResult(RESULT_OK);

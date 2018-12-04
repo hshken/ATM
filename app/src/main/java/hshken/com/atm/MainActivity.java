@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
                 //int gender = getSharedPreferences("user",MODE_PRIVATE)
                  //       .getInt("GENDER",0);
                // if(nickname == null || age == 0 || gender == 0) {
-                if (user.isValid()){
+                if (!user.isValid()){
                     Intent nick = new Intent(this, NicknameActivity.class);
                     startActivity(nick);
               }

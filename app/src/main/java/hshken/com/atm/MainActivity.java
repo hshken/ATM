@@ -32,48 +32,9 @@ public class MainActivity extends BaseActivity {
             startActivityForResult(intent, RC_LOGIN);
         }
         //data
-        //listView();
-         //listView建立清單
-        RecyclerView recyclerView = findViewById(R.id.recycler);
-        //確定size有無固定(也就是是否加入或刪除)，避免每次重新畫表格
-        recyclerView.setHasFixedSize(true);
-        //new出一列一列的linear
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new FruitAdapter());
+        listView();
     }
-
-    class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHolder> {
-        @NonNull
-        @Override
-        public FruitViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Context context = parent.getContext();
-            View view = LayoutInflater.from(context)
-                    .inflate(android.R.layout.simple_list_item_1,parent,false);
-            FruitViewHolder fruitViewHolder = new FruitViewHolder(view);
-            return fruitViewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull FruitViewHolder holder, int position) {
-            holder.fruitname.setText(fruits.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return fruits.size();
-        }
-
-        class FruitViewHolder extends RecyclerView.ViewHolder{
-            TextView fruitname;
-            public FruitViewHolder(View itemView) {
-                super(itemView);
-                fruitname = itemView.findViewById(android.R.id.text1);
-            }
-        }
-    }
-
     private void listView() {
-        List<String> fruits = Arrays.asList("香蕉","鳳梨","芭樂");
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,fruits);
         ListView listView =findViewById(R.id.list);

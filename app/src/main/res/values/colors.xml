@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <string-array name="rainbow">
-        <item></item>
+        <item>000000</item>
+        <item>000000</item>
+        <item>000000</item>
+        <item>000000</item>
+        <item>000000</item>
+        <item>000000</item>
     </string-array>
 </resources>

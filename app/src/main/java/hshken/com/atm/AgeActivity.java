@@ -19,13 +19,13 @@ public class AgeActivity extends BaseActivity {
     private EditText edage;
     private int age;
     int[] numbers ={19,20,21,22,23,24,25,26,27,28,29,30};
-    String rainbow = null;
+    String[] rainbow = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age);
-        getResources().getStringArray(R.array.rainbow);
+        rainbow =getResources().getStringArray(R.array.rainbow);
         RecyclerView ageRecyclerView = findViewById(R.id.recycle);
         ageRecyclerView.setHasFixedSize(true);
         ageRecyclerView.setLayoutManager(new LinearLayoutManager(this));

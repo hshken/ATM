@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
@@ -17,19 +18,23 @@ import android.widget.TextView;
 public class AgeActivity extends BaseActivity {
     private EditText edage;
     private int age;
-    int[] numbers ={19,20,21,22,23,24,25};
+    int[] numbers ={19,20,21,22,23,24,25,26,27,28,29,30};
+    String rainbow = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age);
+        getResources().getStringArray(R.array.rainbow);
         RecyclerView ageRecyclerView = findViewById(R.id.recycle);
         ageRecyclerView.setHasFixedSize(true);
         ageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         ageRecyclerView.setAdapter(new AgeAdapter());
+        edage = findViewById(R.id.ed_age);
     }
     public void next(View view){
+        int age = Integer.parseInt(edage.getText().toString());
         edage = findViewById(R.id.ed_age);
-       int age = Integer.parseInt(edage.getText().toString());
         user.setAge(age);
 
 
@@ -54,11 +59,18 @@ public class AgeActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull AgeViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull AgeViewHolder holder, final int position) {
             holder.ageText.setText(numbers[position] + "");
-               if (numbers[position] ==19)
-                holder.ageText.setTextColor(Color.RED);
+            holder.itemView.setBackgroundColor(Integer.parseInt(rainbow[position%6], 16));
+               holder.ageText.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       Log.d("AgeActivity", "onClick" +numbers[position]);
+                       edage.setText(numbers[position]+"");
+                   }
+               });
         }
+
 
         @Override
         public int getItemCount() {
